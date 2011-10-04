@@ -1,0 +1,9 @@
+<package project="Mer:Trunk:Base" name="fontconfig">
+  <title>Font configuration and customization library</title>
+  <description>Fontconfig is designed to locate fonts within the
+system and select them according to requirements specified by 
+applications.
+
+</description>
+  <url>http://fontconfig.org</url>
+</package>
