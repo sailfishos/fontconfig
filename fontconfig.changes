@@ -1,3 +1,6 @@
+* Thu Dec 15 2011 Marko Saukko <marko.saukko@cybercom.com> - 2.8.0
+- Depend on /bin/grep because of the rpm scripts.
+
 * Thu Jun 16 2011 Wei James <james.wei@intel.com> - 2.8.0
 - Rollback the last change for 49-sansserif.conf to fix BMC#17376
 - It will not impact BMC#9024, tested in latest netbook image. 

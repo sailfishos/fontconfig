@@ -15,9 +15,10 @@ Description: |
     system and select them according to requirements specified by 
     applications.
 
-RequiresPre:
+RequiresPost:
     - freetype >= %{freetype_version}
     - coreutils
+    - /bin/grep
 PkgConfigBR:
     - freetype2 >= %{freetype_version}
        
