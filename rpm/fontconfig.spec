@@ -11,6 +11,7 @@ Source0:    http://fontconfig.org/release/fontconfig-%{version}.tar.gz
 Source1:    10-antialias.conf
 Source2:    10-hinted.conf
 Source3:    25-no-bitmap-fedora.conf
+Source4:    fcblanks.h
 Requires(post): freetype >= %{freetype_version}
 Requires(post): coreutils
 Requires(post): /bin/grep
@@ -59,6 +60,9 @@ will use fontconfig.
 %build
 # We don't want to rebuild the docs, but we want to install the included ones.
 export HASDOCBOOK=no
+
+# avoid build time network dependency
+cp %{SOURCE4} fontconfig/fc-blanks/fcblanks.h
 
 pushd fontconfig
 sh autogen.sh
