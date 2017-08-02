@@ -2,7 +2,7 @@
 
 Name:       fontconfig
 Summary:    Font configuration and customization library
-Version:    2.12.1
+Version:    2.12.4
 Release:    1
 Group:      System/Libraries
 License:    MIT
@@ -130,7 +130,6 @@ fi
 %dir %{_datadir}/fonts
 %{_datadir}/xml/fontconfig/fonts.dtd
 %config %{_sysconfdir}/fonts/fonts.conf
-%doc %{_sysconfdir}/fonts/conf.d/README
 %{_datadir}/fontconfig/conf.avail/*.conf
 %config(noreplace) %{_sysconfdir}/fonts/conf.d/*.conf
 %dir %{_localstatedir}/cache/fontconfig
@@ -141,4 +140,4 @@ fi
 %{_libdir}/libfontconfig.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/fontconfig
-
+%doc %{_sysconfdir}/fonts/conf.d/README
