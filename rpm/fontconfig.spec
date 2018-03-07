@@ -12,6 +12,7 @@ Source1:    10-antialias.conf
 Source2:    10-hinted.conf
 Source3:    25-no-bitmap-fedora.conf
 Source4:    fcblanks.h
+Requires:   fontpackages-filesystem
 Requires(post): freetype >= %{freetype_version}
 Requires(post): coreutils
 Requires(post): /bin/grep
