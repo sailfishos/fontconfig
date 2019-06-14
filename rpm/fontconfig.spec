@@ -2,7 +2,7 @@
 
 Name:       fontconfig
 Summary:    Font configuration and customization library
-Version:    2.12.4
+Version:    2.13.1
 Release:    1
 Group:      System/Libraries
 License:    MIT
@@ -11,7 +11,6 @@ Source0:    http://fontconfig.org/release/fontconfig-%{version}.tar.gz
 Source1:    10-antialias.conf
 Source2:    10-hinted.conf
 Source3:    25-no-bitmap-fedora.conf
-Source4:    fcblanks.h
 Requires:   fontpackages-filesystem
 Requires(post): freetype >= %{freetype_version}
 Requires(post): coreutils
@@ -19,15 +18,10 @@ Requires(post): /bin/grep
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(freetype2) >= %{freetype_version}
-BuildRequires:  gawk
 BuildRequires:  expat-devel
-BuildRequires:  perl
-BuildRequires:  python
-BuildRequires:  python-lxml
 BuildRequires:  gperf
-Conflicts:   fonts-hebrew < 0.100
-Conflicts:   fonts-xorg-base
-Conflicts:   fonts-xorg-syriac
+BuildRequires:  gettext
+BuildRequires:  libuuid-devel
 
 
 %description
@@ -36,14 +30,11 @@ system and select them according to requirements specified by
 applications.
 
 
-
 %package devel
 Summary:    Font configuration and customization library
 Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
-Requires:   fontconfig = %{version}-%{release}
 Requires:   freetype-devel >= %{freetype_version}
-Requires:   pkgconfig
 
 %description devel
 The fontconfig-devel package includes the header files,
@@ -51,7 +42,6 @@ and developer docs for the fontconfig package.
 
 Install fontconfig-devel if you want to develop programs which 
 will use fontconfig.
-
 
 
 %prep
@@ -62,13 +52,9 @@ will use fontconfig.
 # We don't want to rebuild the docs, but we want to install the included ones.
 export HASDOCBOOK=no
 
-# avoid build time network dependency
-cp %{SOURCE4} fontconfig/fc-blanks/fcblanks.h
-
 pushd fontconfig
-sh autogen.sh
-%configure --disable-static \
-    --with-add-fonts=/usr/share/X11/fonts/Type1,/usr/share/X11/fonts/TTF,/usr/local/share/fonts
+NOCONFIGURE=1 sh autogen.sh
+%configure --disable-static
 
 make %{?jobs:-j%jobs}
 # appears to run tests against already installed fontconfig with mb2, likely something similar on obs too.
@@ -127,6 +113,7 @@ fi
 %{_bindir}/fc-scan
 %{_bindir}/fc-pattern
 %{_bindir}/fc-validate
+%{_bindir}/fc-conflist
 %dir %{_datadir}/fontconfig/conf.avail
 %dir %{_datadir}/fonts
 %{_datadir}/xml/fontconfig/fonts.dtd
@@ -139,6 +126,10 @@ fi
 %files devel
 %defattr(-, root, root)
 %{_libdir}/libfontconfig.so
-%{_libdir}/pkgconfig/*
+%{_libdir}/pkgconfig/*.pc
 %{_includedir}/fontconfig
 %doc %{_sysconfdir}/fonts/conf.d/README
+%{_datadir}/gettext/its/fontconfig.its
+%{_datadir}/gettext/its/fontconfig.loc
+%{_datadir}/locale/zh_CN/LC_MESSAGES/fontconfig-conf.mo
+%{_datadir}/locale/zh_CN/LC_MESSAGES/fontconfig.mo
