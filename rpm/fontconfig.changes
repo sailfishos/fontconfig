@@ -25,10 +25,10 @@
 * Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 2.5.0-2
 - Autorebuild for GCC 4.3
 
-* Thu Nov 13 2007 Behdad Esfahbod <besfahbo@redhat.com> - 2.5.0-1
+* Tue Nov 13 2007 Behdad Esfahbod <besfahbo@redhat.com> - 2.5.0-1
 - Update to 2.5.0.
 
-* Thu Nov 06 2007 Behdad Esfahbod <besfahbo@redhat.com> - 2.4.92-1
+* Tue Nov 06 2007 Behdad Esfahbod <besfahbo@redhat.com> - 2.4.92-1
 - Update to 2.4.92.
 - Mark /etc/fonts/conf.d/* as config(noreplace).
 - Remove most of our conf file, all upstreamed except for
@@ -140,7 +140,7 @@
 * Fri Feb 24 2006 Matthias Clasen <mclasen@redhat.com> - 2.3.94-1
 - Update to 2.3.94
 
-* Wed Feb 11 2006 Matthias Clasen <mclasen@redhat.com> - 2.3.93.cvs20060211-1
+* Sat Feb 11 2006 Matthias Clasen <mclasen@redhat.com> - 2.3.93.cvs20060211-1
 - Newer cvs snapshot
 
 * Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 2.3.93.cvs20060208-1.1
@@ -193,7 +193,7 @@
 * Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
 - rebuilt
 
-* Sat Nov 28 2005 Matthias Clasen <mclasen@redhat.com> - 2.3.92.cvs20051129-1
+* Mon Nov 28 2005 Matthias Clasen <mclasen@redhat.com> - 2.3.92.cvs20051129-1
 - Update to a newer cvs snapshot
 
 * Sat Nov 19 2005 Matthias Clasen <mclasen@redhat.com> - 2.3.92.cvs20051119-1
@@ -211,7 +211,7 @@
 * Fri Nov  4 2005 Matthias Clasen <mclasen@redhat.com> - 2.3.92-1
 - Update to 2.3.92
 
-* Fri Oct 31 2005 Matthias Clasen <mclasen@redhat.com> - 2.3.91.cvs20051031-1
+* Mon Oct 31 2005 Matthias Clasen <mclasen@redhat.com> - 2.3.91.cvs20051031-1
 - Update to a newer cvs snapshot
 - Add a patch which should help to understand broken cache problems
 
