@@ -119,7 +119,7 @@ fi
 %{_datadir}/xml/fontconfig/fonts.dtd
 %config %{_sysconfdir}/fonts/fonts.conf
 %{_datadir}/fontconfig/conf.avail/*.conf
-%config(noreplace) %{_sysconfdir}/fonts/conf.d/*.conf
+%config %{_sysconfdir}/fonts/conf.d/*.conf
 %dir %{_localstatedir}/cache/fontconfig
 
 
