@@ -14,7 +14,7 @@ Source3:    25-no-bitmap-fedora.conf
 Requires:   fontpackages-filesystem
 Requires(post): freetype >= %{freetype_version}
 Requires(post): coreutils
-Requires(post): /bin/grep
+Requires(post): /usr/bin/grep
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(freetype2) >= %{freetype_version}
