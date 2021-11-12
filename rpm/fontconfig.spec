@@ -4,7 +4,6 @@ Name:       fontconfig
 Summary:    Font configuration and customization library
 Version:    2.13.1
 Release:    1
-Group:      System/Libraries
 License:    MIT
 URL:        http://fontconfig.org
 Source0:    http://fontconfig.org/release/fontconfig-%{version}.tar.gz
@@ -32,7 +31,6 @@ applications.
 
 %package devel
 Summary:    Font configuration and customization library
-Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 Requires:   freetype-devel >= %{freetype_version}
 
@@ -45,27 +43,20 @@ will use fontconfig.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}/%{name}
 
 
 %build
 # We don't want to rebuild the docs, but we want to install the included ones.
 export HASDOCBOOK=no
 
-pushd fontconfig
 NOCONFIGURE=1 sh autogen.sh
 %configure --disable-static
-
-make %{?jobs:-j%jobs}
-# appears to run tests against already installed fontconfig with mb2, likely something similar on obs too.
-# test set is quite small so just omit for now
-#make check
-popd
+%make_build
 
 %install
 rm -rf %{buildroot}
 
-pushd fontconfig
 %make_install
 
 install -m 0644 %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/fontconfig/conf.avail
@@ -79,7 +70,6 @@ ln -s %{_datadir}/fontconfig/conf.avail/25-no-bitmap-fedora.conf $RPM_BUILD_ROOT
 # All font packages depend on this package, so we create
 # and own /usr/share/fonts
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/fonts
-popd
 
 
 %post
@@ -104,6 +94,7 @@ fi
 
 %files
 %defattr(-,root,root,-)
+%license COPYING
 %{_libdir}/libfontconfig.so.*
 %{_bindir}/fc-cache
 %{_bindir}/fc-cat
