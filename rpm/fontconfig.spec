@@ -2,11 +2,11 @@
 
 Name:       fontconfig
 Summary:    Font configuration and customization library
-Version:    2.13.1
+Version:    2.13.96
 Release:    1
 License:    MIT
 URL:        http://fontconfig.org
-Source0:    http://fontconfig.org/release/fontconfig-%{version}.tar.gz
+Source0:    fontconfig-%{version}.tar.gz
 Source1:    10-antialias.conf
 Source2:    10-hinted.conf
 Source3:    25-no-bitmap-fedora.conf
@@ -20,7 +20,6 @@ BuildRequires:  pkgconfig(freetype2) >= %{freetype_version}
 BuildRequires:  expat-devel
 BuildRequires:  gperf
 BuildRequires:  gettext
-BuildRequires:  libuuid-devel
 
 
 %description
