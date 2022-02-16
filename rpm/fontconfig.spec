@@ -20,7 +20,7 @@ BuildRequires:  pkgconfig(freetype2) >= %{freetype_version}
 BuildRequires:  expat-devel
 BuildRequires:  gperf
 BuildRequires:  gettext
-
+BuildRequires:  python3-base
 
 %description
 Fontconfig is designed to locate fonts within the
