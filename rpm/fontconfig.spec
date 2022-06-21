@@ -6,8 +6,8 @@ Version:    2.13.1
 Release:    1
 Group:      System/Libraries
 License:    MIT
-URL:        http://fontconfig.org
-Source0:    http://fontconfig.org/release/fontconfig-%{version}.tar.gz
+URL:        https://github.com/sailfishos/fontconfig
+Source0:    %{name}-%{version}.tar.gz
 Source1:    10-antialias.conf
 Source2:    10-hinted.conf
 Source3:    25-no-bitmap-fedora.conf
