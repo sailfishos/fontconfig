@@ -5,7 +5,7 @@ Summary:    Font configuration and customization library
 Version:    2.13.96
 Release:    1
 License:    MIT
-URL:        http://fontconfig.org
+URL:        https://github.com/sailfishos/fontconfig
 Source0:    fontconfig-%{version}.tar.gz
 Source1:    10-antialias.conf
 Source2:    10-hinted.conf
