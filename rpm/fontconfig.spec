@@ -4,7 +4,6 @@ Name:       fontconfig
 Summary:    Font configuration and customization library
 Version:    2.13.1
 Release:    1
-Group:      System/Libraries
 License:    MIT
 URL:        https://github.com/sailfishos/fontconfig
 Source0:    %{name}-%{version}.tar.gz
@@ -32,7 +31,6 @@ applications.
 
 %package devel
 Summary:    Font configuration and customization library
-Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
 Requires:   freetype-devel >= %{freetype_version}
 
