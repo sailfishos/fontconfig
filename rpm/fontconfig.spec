@@ -1,8 +1,8 @@
-%global freetype_version 2.1.4
+%global freetype_version 2.9.1
 
 Name:       fontconfig
 Summary:    Font configuration and customization library
-Version:    2.13.96
+Version:    2.18.3
 Release:    1
 License:    MIT
 URL:        https://github.com/sailfishos/fontconfig
@@ -21,12 +21,13 @@ BuildRequires:  expat-devel
 BuildRequires:  gperf
 BuildRequires:  gettext
 BuildRequires:  python3-base
+BuildRequires:  meson >= 1.11.0
+BuildRequires:  ninja
 
 %description
 Fontconfig is designed to locate fonts within the
 system and select them according to requirements specified by 
 applications.
-
 
 %package devel
 Summary:    Font configuration and customization library
@@ -40,23 +41,18 @@ and developer docs for the fontconfig package.
 Install fontconfig-devel if you want to develop programs which 
 will use fontconfig.
 
-
 %prep
 %autosetup -p1 -n %{name}-%{version}/%{name}
 
-
 %build
-# We don't want to rebuild the docs, but we want to install the included ones.
-export HASDOCBOOK=no
-
-NOCONFIGURE=1 sh autogen.sh
-%configure --disable-static
-%make_build
+%meson \
+  -Ddoc=disabled \
+  -Dcache-build=disabled \
+  --default-library=shared
+%meson_build
 
 %install
-rm -rf %{buildroot}
-
-%make_install
+%meson_install
 
 install -m 0644 %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/fontconfig/conf.avail
 install -m 0644 %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/fontconfig/conf.avail
@@ -69,7 +65,6 @@ ln -s %{_datadir}/fontconfig/conf.avail/25-no-bitmap-fedora.conf $RPM_BUILD_ROOT
 # All font packages depend on this package, so we create
 # and own /usr/share/fonts
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/fonts
-
 
 %post
 /sbin/ldconfig
@@ -90,13 +85,12 @@ fi
 
 %postun -p /sbin/ldconfig
 
-
 %files
-%defattr(-,root,root,-)
 %license COPYING
 %{_libdir}/libfontconfig.so.*
 %{_bindir}/fc-cache
 %{_bindir}/fc-cat
+%{_bindir}/fc-genconf
 %{_bindir}/fc-list
 %{_bindir}/fc-match
 %{_bindir}/fc-query
@@ -112,14 +106,14 @@ fi
 %config %{_sysconfdir}/fonts/conf.d/*.conf
 %dir %{_localstatedir}/cache/fontconfig
 
-
 %files devel
-%defattr(-, root, root)
 %{_libdir}/libfontconfig.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/fontconfig
 %doc %{_sysconfdir}/fonts/conf.d/README
 %{_datadir}/gettext/its/fontconfig.its
 %{_datadir}/gettext/its/fontconfig.loc
+%{_datadir}/locale/ka/LC_MESSAGES/fontconfig-conf.mo
+%{_datadir}/locale/ka/LC_MESSAGES/fontconfig.mo
 %{_datadir}/locale/zh_CN/LC_MESSAGES/fontconfig-conf.mo
 %{_datadir}/locale/zh_CN/LC_MESSAGES/fontconfig.mo
